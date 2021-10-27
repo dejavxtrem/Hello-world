@@ -2,6 +2,13 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+
+command:
+  print_pipeline_id:
+    description: "print the CIRCLE_WORKFLOW_ID to the console"
+    steps:
+      - run: echo ${CIRCLE_WORKFLOW_ID}
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -30,7 +37,7 @@ jobs:
           command: echo "text to output here" > ~/output.txt
       - persist_to_workspace:
           root: ~/
-          path:
+          paths:
             - output.txt
 
   print_output_file:
@@ -41,6 +48,8 @@ jobs:
     steps:
       - attach_workspace:
             at: ~/
+
+      - print_pipeline_id
       - run:
           command: cat ~/output.txt
     
