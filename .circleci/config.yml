@@ -78,4 +78,3 @@ workflows:
   my_workflows:
     jobs:
       - my_job
-      
