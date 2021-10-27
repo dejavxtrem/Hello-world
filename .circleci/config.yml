@@ -43,26 +43,26 @@ jobs:
   #         paths:
   #           - output.txt
 
-  # print_output_file:
+  print_output_file:
 
-  #   docker:
-  #     - image: circleci/node:13.8.0
+    docker:
+      - image: circleci/node:13.8.0
 
-  #   steps:
-  #     - attach_workspace:
-  #           at: ~/
+    steps:
+      - attach_workspace:
+            at: ~/
 
-  #     - print_pipeline_id
-  #     - run:
-  #         command: cat ~/output.txt
+      - print_pipeline_id
+      - run:
+          command: cat ~/output.txt
 
-    my_job:
-      docker:
-        - image: circleci/node:13.8.0
+  my_job:
+    docker:
+      - image: circleci/node:13.8.0
 
-      steps:
-        - print_pipeline_id:
-            id: << pipeline.id >>
+    steps:
+      - print_pipeline_id:
+          id: << pipeline.id >>
     
 
   
