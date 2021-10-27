@@ -38,6 +38,23 @@ jobs:
       - run:
           command: "echo World"
 
+  print_myname:
+
+    docker:
+      - image: cimg/base:2020.01
+
+    steps:
+      - checkout
+      - run:
+          name: "echo my name"
+          command: echo $MY_ENV_VAR
+  
+
+
+ 
+    
+    
+
   
 
 # Invoke jobs via workflows
@@ -50,4 +67,5 @@ workflows:
       - print_world:
           requires:
             - print_hello
+      - print_myname
       
