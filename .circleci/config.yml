@@ -76,11 +76,15 @@ jobs:
       - image: circleci/node:13.8.0
 
     steps:
+
+      - run:
+          command: echo "previous job don fail"
+
       - run:
           name: when previous job fails
           when: on_fail
 
-      - run: echo "previous job don fail"
+      
 
   
   
