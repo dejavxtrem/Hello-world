@@ -80,7 +80,7 @@ jobs:
           name: when previous job fails
           when: on_fail
 
-      - run: echo previous job don fail
+      - run: echo "previous job don fail"
 
   
   
