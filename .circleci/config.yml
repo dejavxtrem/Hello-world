@@ -63,11 +63,26 @@ jobs:
     steps:
       - print_pipeline_id:
           id: << pipeline.id >>
-    
+
+  test_fail_job:
+    docker:
+      - image: circleci/node:13.8.0 
+
+    steps:
+      - run: return 1
+
+  onfail_job_check:
+    docker:
+      - image: circleci/node:13.8.0
+
+    steps:
+      - run:
+          name: when previous job fails
+          command: echo "previous job don fail"
+          when: on_fail
 
   
   
-
 
 
   
@@ -78,3 +93,5 @@ workflows:
   my_workflows:
     jobs:
       - my_job
+      - test_fail_job
+      - onfail_job_check
