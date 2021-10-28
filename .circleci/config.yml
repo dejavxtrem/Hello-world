@@ -78,8 +78,9 @@ jobs:
     steps:
       - run:
           name: when previous job fails
-          command: echo "previous job don fail"
           when: on_fail
+
+      - run: echo previous job don fail
 
   
   
